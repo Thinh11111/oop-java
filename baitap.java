@@ -83,6 +83,35 @@ class NVPV extends NHANVIEN
 		return luongcb;
 	}
 }
+class NVNC extends NHANVIEN
+{
+	String chuyenmon;
+	float phucapdh;
+	NVNC(){
+		
+	}
+	NVNC(String ma, String ht, String td, float lcb , String cm, float pcdh){
+		super(ma,ht,td,lcb);
+		chuyenmon=cm;
+		phucapdh=pcdh;
+	}
+	public void Input(){
+		Scanner nhap =new Scanner(System.in);
+		super.Input();
+		System.out.println("\nnhap vao chuyen mon");
+		chuyenmon=nhap.nextLine();
+		System.out.println("\nnhap vao phu cap dsh");
+		phucapdh=nhap.nextFloat();
+	}
+	public void Outut(){
+		super.Output();
+		System.out.println("chuyen mon"+chuyenmon);
+		System.out.println("pcdh"+phucapdh);
+	}
+	float Tinhluong(){
+		return luongcb+phucapdh;
+	}
+}
 class QUANLY
 {
 	ArrayList <NHANVIEN> dsnv = new ArrayList<NHANVIEN>();
@@ -108,6 +137,9 @@ class QUANLY
 					dsnv.add(nv);
 					break;
 				case 2:
+					nv=new NVNC();
+					nv.Input();
+					dsnv.add(nv);
 					break;
 				case 3:
 					nv = new NVPV();
